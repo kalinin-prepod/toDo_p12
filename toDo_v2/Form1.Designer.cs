@@ -30,13 +30,14 @@ namespace toDo_v2
         private void InitializeComponent()
         {
             this.panelLeft = new System.Windows.Forms.Panel();
+            this.panelTasks = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.panelTop = new System.Windows.Forms.Panel();
+            this.buttonAddNewTask = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.panelTasks = new System.Windows.Forms.Panel();
             this.panelLeft.SuspendLayout();
             this.panelTop.SuspendLayout();
             this.SuspendLayout();
@@ -53,6 +54,15 @@ namespace toDo_v2
             this.panelLeft.Name = "panelLeft";
             this.panelLeft.Size = new System.Drawing.Size(185, 350);
             this.panelLeft.TabIndex = 1;
+            // 
+            // panelTasks
+            // 
+            this.panelTasks.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.panelTasks.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelTasks.Location = new System.Drawing.Point(185, 100);
+            this.panelTasks.Name = "panelTasks";
+            this.panelTasks.Size = new System.Drawing.Size(615, 350);
+            this.panelTasks.TabIndex = 2;
             // 
             // button3
             // 
@@ -121,12 +131,27 @@ namespace toDo_v2
             // panelTop
             // 
             this.panelTop.BackgroundImage = global::toDo_v2.Properties.Resources.bg11;
+            this.panelTop.Controls.Add(this.buttonAddNewTask);
             this.panelTop.Controls.Add(this.label1);
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(0, 0);
             this.panelTop.Name = "panelTop";
             this.panelTop.Size = new System.Drawing.Size(800, 100);
             this.panelTop.TabIndex = 0;
+            // 
+            // buttonAddNewTask
+            // 
+            this.buttonAddNewTask.BackColor = System.Drawing.Color.Transparent;
+            this.buttonAddNewTask.BackgroundImage = global::toDo_v2.Properties.Resources.add_icon;
+            this.buttonAddNewTask.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonAddNewTask.FlatAppearance.BorderSize = 0;
+            this.buttonAddNewTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAddNewTask.Location = new System.Drawing.Point(139, 38);
+            this.buttonAddNewTask.Name = "buttonAddNewTask";
+            this.buttonAddNewTask.Size = new System.Drawing.Size(30, 30);
+            this.buttonAddNewTask.TabIndex = 1;
+            this.buttonAddNewTask.UseVisualStyleBackColor = false;
+            this.buttonAddNewTask.Click += new System.EventHandler(this.buttonAddNewTask_Click);
             // 
             // label1
             // 
@@ -139,15 +164,6 @@ namespace toDo_v2
             this.label1.Size = new System.Drawing.Size(130, 45);
             this.label1.TabIndex = 0;
             this.label1.Text = "My Tasks";
-            // 
-            // panelTasks
-            // 
-            this.panelTasks.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.panelTasks.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelTasks.Location = new System.Drawing.Point(185, 100);
-            this.panelTasks.Name = "panelTasks";
-            this.panelTasks.Size = new System.Drawing.Size(615, 350);
-            this.panelTasks.TabIndex = 2;
             // 
             // Form1
             // 
@@ -177,6 +193,7 @@ namespace toDo_v2
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panelTasks;
+        private System.Windows.Forms.Button buttonAddNewTask;
     }
 }
 

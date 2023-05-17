@@ -12,7 +12,7 @@ namespace toDo_v2
 {
     public partial class Form1 : Form
     {
-        
+        List<Task> userTasks = new List<Task> { };
 
         public Form1()
         {
@@ -21,14 +21,34 @@ namespace toDo_v2
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            taskTile tile = new taskTile(panelTasks,"Заголовок1","Текст задания1");
-            taskTile tile1 = new taskTile(panelTasks,"Заголовок2","Текст задания2");
-            taskTile tile2 = new taskTile(panelTasks,"Заголовок3","Текст задания3");
-            taskTile tile3 = new taskTile(panelTasks,"Заголовок4","Текст задания4");
-            taskTile tile4 = new taskTile(panelTasks,"Заголовок5","Текст задания5");
+            userTasks.Add(new Task("Сходить в магазин","Купить баклажан-убийцу"));
+            userTasks.Add(new Task("Войти в тайное общество","Пароль рыжий воланчик"));
+            userTasks.Add(new Task("Заказать еды","С алиэкспресс"));
+            UpdatePanelTasks();
+        }
+
+        private void buttonAddNewTask_Click(object sender, EventArgs e)
+        {
+            AddNewTaskForm ntf = new AddNewTaskForm();
+            DialogResult result = ntf.ShowDialog();
+
+            if (result == DialogResult.OK) 
+            {
+                userTasks.Add(new Task(ntf.title, ntf.text));
+                UpdatePanelTasks();
+            }
 
         }
 
-       
+        private void UpdatePanelTasks() 
+        {
+            panelTasks.Controls.Clear();
+
+            foreach (var element in userTasks)
+            {
+                new taskTile(panelTasks, element.title, element.text);
+            }
+        }
+
     }
 }
