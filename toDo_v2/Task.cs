@@ -19,10 +19,8 @@ namespace toDo_v2
         {
             this.title = title;
             this.text = text;
-
             this.isDone = false;
             this.timeStamp = (int)DateTime.Now.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
-
         }
 
 

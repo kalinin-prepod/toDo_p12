@@ -46,6 +46,7 @@ namespace toDo_v2
             this.textBoxTitle.Name = "textBoxTitle";
             this.textBoxTitle.Size = new System.Drawing.Size(348, 30);
             this.textBoxTitle.TabIndex = 0;
+            this.textBoxTitle.TextChanged += new System.EventHandler(this.textBoxTitle_TextChanged);
             // 
             // label1
             // 

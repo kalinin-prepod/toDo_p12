@@ -30,11 +30,11 @@ namespace toDo_v2
         private void InitializeComponent()
         {
             this.panelLeft = new System.Windows.Forms.Panel();
+            this.buttonSortByName = new System.Windows.Forms.Button();
+            this.buttonSortByTime = new System.Windows.Forms.Button();
+            this.buttonShowCompteted = new System.Windows.Forms.Button();
+            this.buttonShowCurrent = new System.Windows.Forms.Button();
             this.panelTasks = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.panelTop = new System.Windows.Forms.Panel();
             this.buttonAddNewTask = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -45,15 +45,82 @@ namespace toDo_v2
             // panelLeft
             // 
             this.panelLeft.BackColor = System.Drawing.Color.RoyalBlue;
-            this.panelLeft.Controls.Add(this.button3);
-            this.panelLeft.Controls.Add(this.button2);
-            this.panelLeft.Controls.Add(this.button1);
-            this.panelLeft.Controls.Add(this.button4);
+            this.panelLeft.Controls.Add(this.buttonSortByName);
+            this.panelLeft.Controls.Add(this.buttonSortByTime);
+            this.panelLeft.Controls.Add(this.buttonShowCompteted);
+            this.panelLeft.Controls.Add(this.buttonShowCurrent);
             this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLeft.Location = new System.Drawing.Point(0, 100);
             this.panelLeft.Name = "panelLeft";
             this.panelLeft.Size = new System.Drawing.Size(185, 350);
             this.panelLeft.TabIndex = 1;
+            // 
+            // buttonSortByName
+            // 
+            this.buttonSortByName.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonSortByName.FlatAppearance.BorderSize = 0;
+            this.buttonSortByName.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
+            this.buttonSortByName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSortByName.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonSortByName.Image = global::toDo_v2.Properties.Resources.img_unchecked;
+            this.buttonSortByName.Location = new System.Drawing.Point(0, 144);
+            this.buttonSortByName.Name = "buttonSortByName";
+            this.buttonSortByName.Size = new System.Drawing.Size(185, 48);
+            this.buttonSortByName.TabIndex = 6;
+            this.buttonSortByName.Text = "Sort by Name";
+            this.buttonSortByName.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonSortByName.UseVisualStyleBackColor = true;
+            // 
+            // buttonSortByTime
+            // 
+            this.buttonSortByTime.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonSortByTime.FlatAppearance.BorderSize = 0;
+            this.buttonSortByTime.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
+            this.buttonSortByTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSortByTime.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonSortByTime.Image = global::toDo_v2.Properties.Resources.img_unchecked;
+            this.buttonSortByTime.Location = new System.Drawing.Point(0, 96);
+            this.buttonSortByTime.Name = "buttonSortByTime";
+            this.buttonSortByTime.Size = new System.Drawing.Size(185, 48);
+            this.buttonSortByTime.TabIndex = 5;
+            this.buttonSortByTime.Text = "Sort by time";
+            this.buttonSortByTime.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonSortByTime.UseVisualStyleBackColor = true;
+            this.buttonSortByTime.Click += new System.EventHandler(this.buttonSortByTime_Click);
+            // 
+            // buttonShowCompteted
+            // 
+            this.buttonShowCompteted.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonShowCompteted.FlatAppearance.BorderSize = 0;
+            this.buttonShowCompteted.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
+            this.buttonShowCompteted.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonShowCompteted.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonShowCompteted.Image = global::toDo_v2.Properties.Resources.img_unchecked;
+            this.buttonShowCompteted.Location = new System.Drawing.Point(0, 48);
+            this.buttonShowCompteted.Name = "buttonShowCompteted";
+            this.buttonShowCompteted.Size = new System.Drawing.Size(185, 48);
+            this.buttonShowCompteted.TabIndex = 4;
+            this.buttonShowCompteted.Text = "Show Completed";
+            this.buttonShowCompteted.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonShowCompteted.UseVisualStyleBackColor = true;
+            this.buttonShowCompteted.Click += new System.EventHandler(this.buttonShowCompteted_Click);
+            // 
+            // buttonShowCurrent
+            // 
+            this.buttonShowCurrent.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonShowCurrent.FlatAppearance.BorderSize = 0;
+            this.buttonShowCurrent.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
+            this.buttonShowCurrent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonShowCurrent.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonShowCurrent.Image = global::toDo_v2.Properties.Resources.img_checked;
+            this.buttonShowCurrent.Location = new System.Drawing.Point(0, 0);
+            this.buttonShowCurrent.Name = "buttonShowCurrent";
+            this.buttonShowCurrent.Size = new System.Drawing.Size(185, 48);
+            this.buttonShowCurrent.TabIndex = 3;
+            this.buttonShowCurrent.Text = "Show Current";
+            this.buttonShowCurrent.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonShowCurrent.UseVisualStyleBackColor = true;
+            this.buttonShowCurrent.Click += new System.EventHandler(this.buttonShowCurrent_Click);
             // 
             // panelTasks
             // 
@@ -63,70 +130,6 @@ namespace toDo_v2
             this.panelTasks.Name = "panelTasks";
             this.panelTasks.Size = new System.Drawing.Size(615, 350);
             this.panelTasks.TabIndex = 2;
-            // 
-            // button3
-            // 
-            this.button3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Image = global::toDo_v2.Properties.Resources.img_unchecked;
-            this.button3.Location = new System.Drawing.Point(0, 144);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(185, 48);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "Show Completed";
-            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Image = global::toDo_v2.Properties.Resources.img_unchecked;
-            this.button2.Location = new System.Drawing.Point(0, 96);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(185, 48);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Show Completed";
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Image = global::toDo_v2.Properties.Resources.img_unchecked;
-            this.button1.Location = new System.Drawing.Point(0, 48);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(185, 48);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Show Completed";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button4.Image = global::toDo_v2.Properties.Resources.img_unchecked;
-            this.button4.Location = new System.Drawing.Point(0, 0);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(185, 48);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Show Completed";
-            this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button4.UseVisualStyleBackColor = true;
             // 
             // panelTop
             // 
@@ -188,10 +191,10 @@ namespace toDo_v2
         private System.Windows.Forms.Panel panelTop;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panelLeft;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonShowCurrent;
+        private System.Windows.Forms.Button buttonSortByName;
+        private System.Windows.Forms.Button buttonSortByTime;
+        private System.Windows.Forms.Button buttonShowCompteted;
         private System.Windows.Forms.Panel panelTasks;
         private System.Windows.Forms.Button buttonAddNewTask;
     }

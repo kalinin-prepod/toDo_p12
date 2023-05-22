@@ -8,6 +8,7 @@ using System.Drawing;
 
 namespace toDo_v2
 {
+    
     public class taskTile
     {
         private Panel panel;
@@ -16,10 +17,8 @@ namespace toDo_v2
         private Label labelTitle;
         private Label labelText;
 
-        private Panel parentPanel;
-        private string title;
-        private string text;
-
+        public  taskTile() 
+        { }
         public taskTile(Panel parentPanel, string title, string text)
         {
             this.panel = new Panel();
@@ -57,8 +56,6 @@ namespace toDo_v2
             this.labelTitle.Text = title;
 
 
-
-
             // buttonDone
             // 
             this.buttonDone.Dock = System.Windows.Forms.DockStyle.Right;
@@ -68,6 +65,7 @@ namespace toDo_v2
             this.buttonDone.Name = "buttonDone";
             this.buttonDone.Size = new System.Drawing.Size(81, 350);
             this.buttonDone.UseVisualStyleBackColor = true;
+            this.buttonDone.Click += new EventHandler(this.MarkAsDone);
 
 
             // buttonDelete
@@ -80,6 +78,18 @@ namespace toDo_v2
             this.buttonDelete.Size = new System.Drawing.Size(81, 350);
             this.buttonDelete.UseVisualStyleBackColor = true;
 
+        
+        }
+
+        
+        private void DeleteTask(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void MarkAsDone(object sender, EventArgs e)
+        {
+            MessageBox.Show("нажато отметить");
         }
 
     }
