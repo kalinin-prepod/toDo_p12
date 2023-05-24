@@ -8,18 +8,22 @@ using System.Drawing;
 
 namespace toDo_v2
 {
-    
+
     public class taskTile
     {
+        public delegate void ClickHandler(string name);
+        public event ClickHandler DeleteNotify;
+        public event ClickHandler DoneNotify;
+
         private Panel panel;
         private Button buttonDone;
         private Button buttonDelete;
         private Label labelTitle;
         private Label labelText;
 
-        public  taskTile() 
+        public taskTile()
         { }
-        public taskTile(Panel parentPanel, string title, string text)
+        public taskTile(Panel parentPanel, string title, string text, bool isDone)
         {
             this.panel = new Panel();
             this.labelText = new Label();
@@ -55,18 +59,20 @@ namespace toDo_v2
             this.labelTitle.Size = new Size(47, 20);
             this.labelTitle.Text = title;
 
-
             // buttonDone
             // 
-            this.buttonDone.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonDone.FlatAppearance.BorderSize = 0;
-            this.buttonDone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDone.Image = global::toDo_v2.Properties.Resources.done;
-            this.buttonDone.Name = "buttonDone";
-            this.buttonDone.Size = new System.Drawing.Size(81, 350);
-            this.buttonDone.UseVisualStyleBackColor = true;
-            this.buttonDone.Click += new EventHandler(this.MarkAsDone);
-
+            if (!isDone)
+            {
+                this.buttonDone.Dock = System.Windows.Forms.DockStyle.Right;
+                this.buttonDone.FlatAppearance.BorderSize = 0;
+                this.buttonDone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                this.buttonDone.Image = global::toDo_v2.Properties.Resources.done;
+                this.buttonDone.Name = "buttonDone";
+                this.buttonDone.Size = new System.Drawing.Size(81, 350);
+                this.buttonDone.UseVisualStyleBackColor = true;
+                this.buttonDone.Click += new EventHandler(this.clickedDone);
+            }
+            
 
             // buttonDelete
             // 
@@ -77,20 +83,18 @@ namespace toDo_v2
             this.buttonDelete.Name = "buttonDone";
             this.buttonDelete.Size = new System.Drawing.Size(81, 350);
             this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new EventHandler(this.clickedDelete);
 
-        
         }
 
-        
-        private void DeleteTask(object sender, EventArgs e)
+        private void clickedDelete(object sender, EventArgs e)
         {
-          
+            DeleteNotify.Invoke(this.labelText.Text);
         }
 
-        private void MarkAsDone(object sender, EventArgs e)
+        private void clickedDone(object sender, EventArgs e)
         {
-            MessageBox.Show("нажато отметить");
+            DoneNotify.Invoke(this.labelText.Text);
         }
-
     }
 }

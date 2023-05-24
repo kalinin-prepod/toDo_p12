@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace toDo_v2
 {
-   
+
     public partial class Form1 : Form
     {
 
@@ -24,15 +24,15 @@ namespace toDo_v2
 
         public Form1()
         {
-            InitializeComponent(); 
+            InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            userTasks.Add(new Task("Сходить в магазин","Купить баклажан-убийцу"));
-            userTasks.Add(new Task("Войти в тайное общество","Пароль рыжий воланчик"));
-            userTasks.Add(new Task("Заказать еды","С алиэкспресс"));
-            userTasks.Add(new Task("сделано 1", "С алиэкспресс"));            
+            userTasks.Add(new Task("Сходить в магазин", "Купить баклажан-убийцу"));
+            userTasks.Add(new Task("Войти в тайное общество", "Пароль рыжий воланчик"));
+            userTasks.Add(new Task("Заказать еды", "С алиэкспресс"));
+            userTasks.Add(new Task("сделано 1", "С алиэкспресс"));
             userTasks.Add(new Task("сделано 2", "С алиэкспресс"));
             userTasks[3].isDone = true;
             userTasks[4].isDone = true;
@@ -45,7 +45,7 @@ namespace toDo_v2
 
             UpdatePanelTasks();
 
-           
+
         }
 
         private void buttonAddNewTask_Click(object sender, EventArgs e)
@@ -53,7 +53,7 @@ namespace toDo_v2
             AddNewTaskForm ntf = new AddNewTaskForm();
             DialogResult result = ntf.ShowDialog();
 
-            if (result == DialogResult.OK) 
+            if (result == DialogResult.OK)
             {
                 userTasks.Add(new Task(ntf.title, ntf.text));
                 UpdatePanelTasks();
@@ -61,7 +61,7 @@ namespace toDo_v2
 
         }
 
-        public void UpdatePanelTasks() 
+        public void UpdatePanelTasks()
         {
             panelTasks.Controls.Clear();
 
@@ -73,8 +73,60 @@ namespace toDo_v2
                 if (!element.isDone && !showCurrent)
                     continue;
 
-                new taskTile(panelTasks, element.title, element.text);          
+                taskTile tt = new taskTile(panelTasks, element.title, element.text, element.isDone);
+                tt.DeleteNotify += deleteHandler;
+                tt.DoneNotify += doneHandler;
             }
+        }
+
+        private void doneHandler(string name)
+        {
+            DialogResult result = MessageBox.Show(
+        "Выберите один из вариантов",
+        "Сообщение",
+        MessageBoxButtons.YesNo,
+        MessageBoxIcon.Information,
+        MessageBoxDefaultButton.Button1,
+        MessageBoxOptions.DefaultDesktopOnly);
+
+            if (result != DialogResult.Yes)
+                return;
+
+            for (int i = 0; i < userTasks.Count; i++)
+            {
+                if (name == userTasks[i].text)
+                {
+                    userTasks[i].isDone = true;
+                    break;
+                }
+            }
+            UpdatePanelTasks();
+        }
+
+        private void deleteHandler(string name)
+        {
+
+            DialogResult result = MessageBox.Show(
+     "Выберите один из вариантов",
+     "Сообщение",
+     MessageBoxButtons.YesNo,
+     MessageBoxIcon.Information,
+     MessageBoxDefaultButton.Button1,
+     MessageBoxOptions.DefaultDesktopOnly);
+
+            if (result != DialogResult.Yes)
+                return;
+
+
+            for (int i = 0; i < userTasks.Count; i++)
+            {
+                if (name == userTasks[i].text)
+                {
+                    userTasks.RemoveAt(i);
+                    break;
+                }
+            }
+            UpdatePanelTasks();
         }
 
         private void buttonShowCurrent_Click(object sender, EventArgs e)
@@ -110,7 +162,7 @@ namespace toDo_v2
 
         private void buttonSortByTime_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < userTasks.Count; i++) 
+            for (int i = 0; i < userTasks.Count; i++)
             {
                 int min = i;
                 for (int j = i; j < userTasks.Count; j++)
