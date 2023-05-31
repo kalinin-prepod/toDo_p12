@@ -29,21 +29,12 @@ namespace toDo_v2
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            userTasks.Add(new Task("Сходить в магазин", "Купить баклажан-убийцу"));
-            userTasks.Add(new Task("Войти в тайное общество", "Пароль рыжий воланчик"));
-            userTasks.Add(new Task("Заказать еды", "С алиэкспресс"));
-            userTasks.Add(new Task("сделано 1", "С алиэкспресс"));
-            userTasks.Add(new Task("сделано 2", "С алиэкспресс"));
-            userTasks[3].isDone = true;
-            userTasks[4].isDone = true;
+            Exception ex = DBModule.Connect();
+            if (ex != null)
+                MessageBox.Show("НЕ удалось подключиться к ДБ:\n" + ex.Message);
 
-            userTasks[0].timeStamp = 200;
-            userTasks[1].timeStamp = 300;
-            userTasks[2].timeStamp = 100;
-            userTasks[3].timeStamp = 400;
-            userTasks[4].timeStamp = 500;
 
-            UpdatePanelTasks();
+            buttonResfesh_Click(sender, e);
 
 
         }
@@ -55,7 +46,9 @@ namespace toDo_v2
 
             if (result == DialogResult.OK)
             {
-                userTasks.Add(new Task(ntf.title, ntf.text));
+                Task t = new Task(ntf.title, ntf.text);
+                userTasks.Add(t);
+                DBModule.AddNew(t);
                 UpdatePanelTasks();
             }
 
@@ -85,9 +78,7 @@ namespace toDo_v2
         "Выберите один из вариантов",
         "Сообщение",
         MessageBoxButtons.YesNo,
-        MessageBoxIcon.Information,
-        MessageBoxDefaultButton.Button1,
-        MessageBoxOptions.DefaultDesktopOnly);
+        MessageBoxIcon.Information);
 
             if (result != DialogResult.Yes)
                 return;
@@ -110,9 +101,7 @@ namespace toDo_v2
      "Выберите один из вариантов",
      "Сообщение",
      MessageBoxButtons.YesNo,
-     MessageBoxIcon.Information,
-     MessageBoxDefaultButton.Button1,
-     MessageBoxOptions.DefaultDesktopOnly);
+     MessageBoxIcon.Information);
 
             if (result != DialogResult.Yes)
                 return;
@@ -175,6 +164,14 @@ namespace toDo_v2
                 userTasks[i] = userTasks[min];
                 userTasks[min] = swap;
             }
+
+            UpdatePanelTasks();
+        }
+
+        private void buttonResfesh_Click(object sender, EventArgs e)
+        {
+            if (DBModule.connection.State == ConnectionState.Open)
+                userTasks = DBModule.getAllTasks();
 
             UpdatePanelTasks();
         }

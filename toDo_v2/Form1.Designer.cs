@@ -38,6 +38,7 @@ namespace toDo_v2
             this.panelTop = new System.Windows.Forms.Panel();
             this.buttonAddNewTask = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.buttonResfesh = new System.Windows.Forms.Button();
             this.panelLeft.SuspendLayout();
             this.panelTop.SuspendLayout();
             this.SuspendLayout();
@@ -134,6 +135,7 @@ namespace toDo_v2
             // panelTop
             // 
             this.panelTop.BackgroundImage = global::toDo_v2.Properties.Resources.bg11;
+            this.panelTop.Controls.Add(this.buttonResfesh);
             this.panelTop.Controls.Add(this.buttonAddNewTask);
             this.panelTop.Controls.Add(this.label1);
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
@@ -168,6 +170,16 @@ namespace toDo_v2
             this.label1.TabIndex = 0;
             this.label1.Text = "My Tasks";
             // 
+            // buttonResfesh
+            // 
+            this.buttonResfesh.Location = new System.Drawing.Point(670, 38);
+            this.buttonResfesh.Name = "buttonResfesh";
+            this.buttonResfesh.Size = new System.Drawing.Size(75, 41);
+            this.buttonResfesh.TabIndex = 2;
+            this.buttonResfesh.Text = "Refresh";
+            this.buttonResfesh.UseVisualStyleBackColor = true;
+            this.buttonResfesh.Click += new System.EventHandler(this.buttonResfesh_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -197,6 +209,7 @@ namespace toDo_v2
         private System.Windows.Forms.Button buttonShowCompteted;
         private System.Windows.Forms.Panel panelTasks;
         private System.Windows.Forms.Button buttonAddNewTask;
+        private System.Windows.Forms.Button buttonResfesh;
     }
 }
 

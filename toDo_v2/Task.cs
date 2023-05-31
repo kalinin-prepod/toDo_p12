@@ -22,7 +22,13 @@ namespace toDo_v2
             this.isDone = false;
             this.timeStamp = (int)DateTime.Now.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
         }
-
+        public Task(string title, string text, bool isDone, int timeStamp)
+        {
+            this.title = title;
+            this.text = text;
+            this.isDone = isDone;
+            this.timeStamp = timeStamp;
+        }
 
     }
 }
